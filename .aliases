@@ -1,0 +1,35 @@
+# TCF
+alias run='docker exec tcf_django'
+alias manage='docker exec -it tcf_django python manage.py'
+alias dockerc='docker-compose'
+alias django-shell='docker exec -i tcf_django python manage.py shell <'
+alias autoformat='docker exec tcf_django autopep8 --in-place --jobs=0 --aggressive --aggressive -r tcf_website tcf_core'
+alias pylint='docker exec tcf_django pylint --jobs=0 --load-plugins pylint_django --django-settings-module=tcf_core.settings tcf_website tcf_core'
+alias eslint='docker exec tcf_django node_modules/.bin/eslint --cache --fix tcf_website/static/**/*.js -c .config/.eslintrc.yml'
+alias test='docker exec tcf_django coverage run manage.py test --keepdb'
+alias coverage='docker exec tcf_django coverage report -m'
+
+# General purpose
+alias open='explorer.exe'
+alias ga='git add'
+alias gc='git commit'
+alias gcm='git commit -m'
+
+
+# Geth (Crypto)
+alias geth-dev='geth --datadir ~/ethprivate --networkid 67834502 --maxpeers 1 --http --http.corsdomain "package://6fd22d6fe5549ad4c4d8fd3ca0b7816b.mod" --http.api web3,eth,debug,personal,net --vmdebug --allow-insecure-unlock'
+alias geth-browserdev='geth --datadir ~/ethprivate --networkid 67834502 --maxpeers 1 --http --http.corsdomain "https://remix.ethereum.org" --http.api web3,eth,debug,personal,net --vmdebug --allow-insecure-unlock'
+alias geth-attach='geth attach ~/ethprivate/geth.ipc'
+
+# TIPC (Compilers)
+export SIPC_ROOT="$HOME/WSL_Projects/sipc-hildebrand_shen"
+alias make='make -j12'
+alias make-sipc="(cd $SIPC_ROOT/build && make)"
+alias remake="(cd $SIPC_ROOT/build && rm -f CMakeCache.txt && cmake .. && make -j12)"
+alias gentests="(cd $SIPC_ROOT/test/unit/frontend && python3 codegen.py > SIPParserTest.cpp)"
+alias retest="make-sipc && $SIPC_ROOT/bin/runtests.sh"
+alias gencov="(cd $SIPC_ROOT && ./bin/gencov.sh)"
+alias regencov="retest && gencov"
+
+# Mobile
+alias android="/mnt/c/Users/Alex/AppData/Local/Android/Sdk/emulator/emulator.exe -avd Pixel_3a_XL_API_31"
