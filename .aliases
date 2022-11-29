@@ -30,6 +30,7 @@ alias gentests="(cd $SIPC_ROOT/test/unit/frontend && python3 codegen.py > SIPPar
 alias retest="make-sipc && $SIPC_ROOT/bin/runtests.sh"
 alias gencov="(cd $SIPC_ROOT && ./bin/gencov.sh)"
 alias regencov="retest && gencov"
+alias sipc="$SIPC_ROOT/bin/build.sh"
 
 # Mobile
 alias android="/mnt/c/Users/Alex/AppData/Local/Android/Sdk/emulator/emulator.exe -avd Pixel_3a_XL_API_31"
