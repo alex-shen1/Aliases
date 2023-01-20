@@ -6,8 +6,7 @@ if os.name != 'nt':
 with open('.aliases', 'r') as f:
     aliases = f.read().split('\n')
 
-profile = os.getenv(
-    'HOME') + '\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1'
+profile = os.path.expanduser('~') + '\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1'
 os.makedirs(os.path.dirname(profile), exist_ok=True)
 with open(profile, 'w+') as f:
     # These are already Windows aliases but I don't care what they're supposed to be
